@@ -44,8 +44,9 @@ func crawler() {
 
 	// Limit the number of threads
 	c.Limit(&colly.LimitRule{
-		Parallelism: 2,
-		Delay:       1 * time.Second,
+		DomainGlob:  u.Host,
+		Parallelism: parallelism,
+		Delay:       time.Duration(delay) * time.Second,
 	})
 
 	// On every a element which has href attribute call callback
