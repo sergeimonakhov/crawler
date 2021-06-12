@@ -35,6 +35,9 @@ jobs:
       - name: Get tag
         id: get_tag
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - name: Get repository name
+        id: get_repository_name
+        run: echo ::set-output name=REPOSITORY_NAME::${GITHUB_REPOSITORY}
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set up QEMU
@@ -54,4 +57,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/${{ env.GITHUB_REPOSITORY }}:${{ steps.get_tag.outputs.VERSION }}
+            ghcr.io/${{ steps.get_repository_name.outputs.REPOSITORY_NAME }}:${{ steps.get_tag.outputs.VERSION }}
