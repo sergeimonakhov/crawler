@@ -37,7 +37,7 @@ jobs:
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
       - name: Get repository name
         id: get_repository_name
-        run: echo ::set-output name=REPOSITORY_NAME::${GITHUB_REPOSITORY}
+        run: echo ::set-output name=REPOSITORY_NAME::$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set up QEMU
