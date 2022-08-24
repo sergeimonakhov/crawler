@@ -26,7 +26,7 @@ RUN go mod verify
 
 RUN GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /usr/local/bin/crawler
 
-FROM scratch
+FROM alpine
 
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /etc/passwd /etc/passwd
