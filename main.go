@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/gocolly/colly"
+	_ "go.uber.org/automaxprocs"
 )
 
 var (
